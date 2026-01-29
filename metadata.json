@@ -1,0 +1,8 @@
+
+{
+  "name": "RTA - Restaurant Technology Assistant",
+  "description": "A complete management system for restaurants, pizzerias, and snack bars, featuring digital menus, order tracking, and automated customer service.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
