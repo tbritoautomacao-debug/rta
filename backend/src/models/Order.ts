@@ -1,20 +1,16 @@
 
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const OrderSchema = new Schema({
-  companyId: { type: Types.ObjectId, ref: "User", required: true },
+  restaurantId: { type: Schema.Types.ObjectId, ref: "Restaurant" },
+  clientId: { type: Schema.Types.ObjectId, ref: "User" },
   items: Array,
-  customer: {
-    name: String,
-    phone: String,
-    address: String
-  },
+  amount: Number,
   status: {
     type: String,
-    enum: ["RECEBIDO", "PREPARANDO", "PRONTO", "SAIU_PARA_ENTREGA"],
-    default: "RECEBIDO"
-  },
-  total: Number
+    enum: ["pending", "paid", "preparing", "ready", "out_for_delivery", "delivered"],
+    default: "pending"
+  }
 }, { timestamps: true });
 
 export default model("Order", OrderSchema);
