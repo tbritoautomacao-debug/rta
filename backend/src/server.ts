@@ -1,4 +1,3 @@
-
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -7,14 +6,15 @@ import app from "./app";
 import { initSocket } from "./socket";
 
 const server = http.createServer(app);
+
+// inicializa websocket
 initSocket(server);
 
-if (process.env.NODE_ENV !== "production") {
-  const port = process.env.PORT || 3000;
-  server.listen(port, () => {
-    console.log("Enterprise server running on port", port);
-  });
-}
+// SEMPRE iniciar o servidor (produção e desenvolvimento)
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+  console.log("Enterprise server running on port", port);
+});
 
 export default server;
-
